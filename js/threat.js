@@ -1,24 +1,29 @@
-function wait(ms) {
-    "use strict";
-    return new Promise(r => setTimeout(r, ms));
-}
-
+/*
 function allowDrop(ev) {
+    "use strict";
     ev.preventDefault();
 }
 
 function drag(ev) {
+    "use strict";
     ev.dataTransfer.setData("text", ev.target.id);
 }
 
 function drop(ev) {
+    "use strict";
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
 }
 
-async function playDeathSound() {
 
+function wait(ms) {
+    "use strict";
+    return new Promise(r => setTimeout(r, ms));
+};
+*/
+
+function playDeathSound() {
     "use strict";
 	var chars = [
 		"AmazonDead",
@@ -34,10 +39,8 @@ async function playDeathSound() {
         document.getElementById("page-body").appendChild(elemDeath);
     }
     
-    elemDeath.id = "audio-death"
+    elemDeath.id = "audio-death";
     elemDeath.src = "sounds/DeathSounds/" + chars[randChar] + randSound + ".wav";
-
-    await wait(300);
     
     elemDeath.play();
     
@@ -49,10 +52,9 @@ async function playDeathSound() {
 }
 
 function playSound(charName) {
- 
     "use strict";
 	var rand = Math.floor((Math.random() * 6) + 1), elem = document.getElementById("audio");
-
+    
     if (elem === null) {
         elem = document.createElement("audio");
         document.getElementById("page-body").appendChild(elem);
@@ -60,21 +62,14 @@ function playSound(charName) {
 
     elem.id = "audio";
     elem.src = "sounds/Common/" + charName + "/" + charName + rand + ".wav";
-    
-    elem.onended = function(){
-        playDeathSound();
-        };
-    
+
     elem.play();
     
-    elem = null;
-    rand = null;
-
-    return false;
+    setTimeout(function () { }, 999);
+    setTimeout(function () { playDeathSound(); }, 999);
 }
 
-async function playDeathSoundDebug() {
-
+function playDeathSoundDebug() {
     "use strict";
 	var chars = [
 		"AmazonDead",
@@ -83,18 +78,18 @@ async function playDeathSoundDebug() {
 		"DruidDead",
 		"NecromancerDead",
 		"PaladinDead",
-		"SorceressDead"], randSound = Math.floor((Math.random() * 3) + 1), randChar = Math.floor(Math.random() * (chars.length)), 
+		"SorceressDead"], randSound = Math.floor((Math.random() * 3) + 1), randChar = Math.floor(Math.random() * (chars.length)),
         elemDeath = document.getElementById("audio-death-chaos"), randSoundEntrance = Math.floor((Math.random() * 28) + 1), elemWelcome = document.getElementById("audio-welcome");
         
-        elemWelcome.src = "sounds/Entrance/Welcome" + randSoundEntrance + ".wav";
-        elemWelcome.play();
+    elemWelcome.src = "sounds/Entrance/Welcome" + randSoundEntrance + ".wav";
+    elemWelcome.play();
     
     if (elemDeath === null) {
         elemDeath = document.createElement("audio");
         document.getElementById("page-body").appendChild(elemDeath);
     }
     
-    elemDeath.id = "audio-death-chaos"
+    elemDeath.id = "audio-death-chaos";
     elemDeath.src = "sounds/DeathSounds/" + chars[randChar] + randSound + ".wav";
     
     elemDeath.play();
@@ -106,7 +101,7 @@ async function playDeathSoundDebug() {
     return false;
 }
 
-async function playSoundChaosDebug() {
+function playSoundChaosDebug() {
     "use strict";
     var chars = [
 		"Amazon",
@@ -122,7 +117,7 @@ async function playSoundChaosDebug() {
         "Mephisto",
         "Meshif",
         "Tyrael",
-        "Warriv",], randChar = Math.floor(Math.random() * (chars.length)), randSound = Math.floor((Math.random() * 3) + 1), elem = document.getElementById("audio-chaos");
+        "Warriv"], randChar = Math.floor(Math.random() * (chars.length)), randSound = Math.floor((Math.random() * 3) + 1), elem = document.getElementById("audio-chaos");
 
     if (elem === null) {
         elem = document.createElement("audio");
@@ -132,10 +127,10 @@ async function playSoundChaosDebug() {
     elem.id = "audio-chaos";
     elem.src = "sounds/Common/" + chars[randChar] + "/" + chars[randChar] + randSound + ".wav";
     
-    elem.onended = function(){
+    elem.onended = function () {
         playDeathSoundDebug();
         playSoundChaosDebug();
-        };
+    };
     
     elem.play();
     
@@ -146,7 +141,6 @@ async function playSoundChaosDebug() {
 }
 
 function playTyrael(charName) {
-
     "use strict";
 	var rand = Math.floor((Math.random() * 9) + 1), elemTyrael = document.getElementById("audio-tyrael");
 
@@ -167,7 +161,6 @@ function playTyrael(charName) {
 }
 
 function playCain(charName) {
-
     "use strict";
 	var rand = Math.floor((Math.random() * 11) + 1), elemCain = document.getElementById("audio-cain");
 
@@ -188,7 +181,6 @@ function playCain(charName) {
 }
 
 function playPrime(charName) {
-
     "use strict";
 	var rand = Math.floor((Math.random() * 3) + 1), elemPrime = document.getElementById("audio-prime");
 
