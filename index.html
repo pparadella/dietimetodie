@@ -26,27 +26,9 @@
         ga('send', 'pageview');
         </script>
         <!-- End Google Analytics -->
-        
-        <!-- Start of StatCounter Code for Default Guide -->
-        <script type="text/javascript">
-        var sc_project=10899983; 
-        var sc_invisible=1; 
-        var sc_security="3a47bb1c"; 
-        var scJsHost = (("https:" == document.location.protocol) ?
-        "https://secure." : "http://www.");
-        document.write("<sc"+"ript type='text/javascript' src='" +
-        scJsHost+
-        "statcounter.com/counter/counter.js'></"+"script>");
-        </script>
-        <noscript><div class="statcounter"><a title="website
-        statistics" href="http://statcounter.com/"
-        target="_blank"><img class="statcounter"
-        src="//c.statcounter.com/10899983/0/3a47bb1c/1/"
-        alt="website statistics"></a></div></noscript>
-        <!-- End of StatCounter Code for Default Guide -->
     </head>
     <body id="page-body">
-    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <button class="hide-on-mobile" onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
     <!-- Main container -->
     <div class="page-container">
     <!-- Navigation Bloc -->
@@ -233,20 +215,19 @@
             </div>
         </div>
     </div>
-
     </div>
     <!-- Footer - bloc-0 END -->
     <!-- Main container END -->
     <script type="text/javascript">
     function downloadJSAtOnload() {
-        "use strict";
-        var elemWelcome = document.createElement("audio"), elemScriptThreat = document.createElement("script"), randSound = Math.floor((Math.random() * 28) + 1);
-        elemScriptThreat.src = "js/threat.min.js";
-        elemWelcome.id = "audio-welcome"
-        elemWelcome.src = "sounds/Entrance/Welcome" + randSound + ".wav";
-        document.getElementById("page-body").appendChild(elemWelcome);
-        document.getElementById("page-body").appendChild(elemScriptThreat);
-        elemWelcome.play();
+    "use strict";
+    var elemWelcome = document.createElement("audio"), elemScriptThreat = document.createElement("script"), randSound = Math.floor((Math.random() * 28) + 1);
+    elemScriptThreat.src = "js/threat.js";
+    elemWelcome.id = "audio-welcome";
+    elemWelcome.src = "sounds/Entrance/Welcome" + randSound + ".wav";
+    document.getElementById("page-body").appendChild(elemWelcome);
+    document.getElementById("page-body").appendChild(elemScriptThreat);
+    elemWelcome.play();
     }
     if (window.addEventListener) {
         window.addEventListener("load", downloadJSAtOnload, false);
