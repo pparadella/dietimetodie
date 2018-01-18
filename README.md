@@ -2,7 +2,7 @@
 
 <h2>www.dietimetodie.com</h2>
 
-![Alt text](www.dietimetodie.com/img/dietimetodie%20page.png "www.dietimetodie.com")
+![Alt text](http://www.dietimetodie.com/img/dietimetodie%20page.png "Die!")
 
 <h2>This project came with a sheer nostalgic feeling of playing Diablo 2.<br>
 Sound collection of the main characters from the game.</h2>
