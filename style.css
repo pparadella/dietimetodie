@@ -8,8 +8,6 @@ body{
     cursor: url(cursor/Diablo2handhalf.png),auto;
 }
 
-/*a,button{outline: none!important;} Prevent ugly blue glow on chrome and safari */
-
 a:visited, a:link
 {
     cursor: url(cursor/Diablo2handhalfLink.png),auto;
@@ -321,6 +319,11 @@ a{
 	float:right;
 }
 
+#parent #popup {
+	display: none;
+}
+
+
 @media (min-width: 768px){
 	.site-navigation{
 		position:absolute;
@@ -329,7 +332,14 @@ a{
 		transform:translate(0, -50%);
 		-webkit-transform:translateY(-50%);
 	}
-    
+
+	#parent:hover #popup {
+		display: block;
+		position: absolute;
+		left: 5%;
+		top: 90%;
+	}
+
     a:visited {
         text-decoration: none;
     }
@@ -563,17 +573,26 @@ a[data-lightbox]:hover img{
 	transition: all .2s ease-in-out;
 	position: absolute;
 	top:50%;
+	z-index: 999;
 }
 .next-lightbox{
 	right:25px;
-	border-left: 20px solid rgba(255,255,255,.4);
+	border-left: 20px solid rgba(134, 46, 46, 0.87);
 }
 .prev-lightbox{
 	left:25px;
-	border-right:20px solid rgba(255,255,255,.4);
+	border-right:20px solid rgba(134, 46, 46, 0.87);
 }
 .prev-lightbox:hover, .next-lightbox:hover{
-	
+	transform: scale(1.2);
+}
+
+.next-lightbox:active{
+	box-shadow: 10px 10px;
+}
+
+.prev-lightbox:active{
+    box-shadow: -10px 10px;
 }
 
 /* Framless */
@@ -740,7 +759,7 @@ a[data-lightbox]:hover img{
     .page-container, #hero-bloc{overflow-x: hidden;position: relative;} /* Prevent unwanted side scroll on mobile */
 }
 @media (max-width: 767px)
-{   
+{
     .hide-on-mobile {
         display: none;
         max-height: 0;
@@ -911,8 +930,8 @@ a[data-lightbox]:hover img{
         display:inline-block;
     }
     .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
-        margin-top: 30px;
-        margin-bottom: 30px;
+        margin-top: 0;
+        margin-bottom: 0;
         text-align: center;
     }
     .video-bg-contianer{

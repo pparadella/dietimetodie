@@ -23,53 +23,55 @@ function wait(ms) {
 };
 */
 
-function playDeathSound() {
-    "use strict";
-	var chars = [
+var playDeath = function() {
+    var chars = [
 		"AmazonDead",
 		"AssassinDead",
 		"BarbarianDead",
 		"DruidDead",
 		"NecromancerDead",
 		"PaladinDead",
-		"SorceressDead"], randSound = Math.floor((Math.random() * 3) + 1), randChar = Math.floor(Math.random() * (chars.length)), elemDeath = document.getElementById("audio-death");
-    
-    if (elemDeath === null) {
-        elemDeath = document.createElement("audio");
-        document.getElementById("page-body").appendChild(elemDeath);
-    }
-    
-    elemDeath.id = "audio-death";
-    elemDeath.src = "sounds/DeathSounds/" + chars[randChar] + randSound + ".wav";
-    
-    elemDeath.play();
-    
-    elemDeath = null;
-    randChar = null;
-    randSound = null;
+        "SorceressDead"
+    ];
+    var randSound = Math.floor((Math.random() * 3) + 1); 
+    var randChar = Math.floor(Math.random() * (chars.length));
 
-    return false;
+    var filePath = "sounds/DeathSounds/" + chars[randChar] + randSound + ".flac";
+
+    var audio = new Audio(); // create audio wo/ src
+    audio.preload = "auto"; // intend to play through
+    audio.autoplay = true; // autoplay when loaded
+  
+    audio.src = filePath;
+    audio.play();
+};
+
+var playSound = function(url) {
+    return new Promise(function(resolve, reject) {
+      // return a promise
+      var audio = new Audio(); // create audio wo/ src
+      audio.preload = "auto"; // intend to play through
+      audio.autoplay = true; // autoplay when loaded
+      audio.onerror = reject; // on error, reject
+      audio.onended = resolve; // when done, resolve
+  
+      audio.src = url;
+    });
+};
+  
+function onClick(charName) {
+    var rand = Math.floor((Math.random() * 6) + 1);
+    var filePath = "sounds/Common/" + charName + "/" + charName + rand + ".flac";
+
+    playSound(filePath).then(function() {
+        setTimeout(function() {(playDeath())}, 100);
+    })
+    .catch(function() {
+        alert('Error');
+    })
 }
 
-function playSound(charName) {
-    "use strict";
-	var rand = Math.floor((Math.random() * 6) + 1), elem = document.getElementById("audio");
-    
-    if (elem === null) {
-        elem = document.createElement("audio");
-        document.getElementById("page-body").appendChild(elem);
-    }
-
-    elem.id = "audio";
-    elem.src = "sounds/Common/" + charName + "/" + charName + rand + ".wav";
-
-    elem.play();
-    
-    setTimeout(function () { }, 999);
-    setTimeout(function () { playDeathSound(); }, 999);
-}
-
-function playDeathSoundDebug() {
+async function playDeathSoundDebug() {
     "use strict";
 	var chars = [
 		"AmazonDead",
@@ -101,7 +103,7 @@ function playDeathSoundDebug() {
     return false;
 }
 
-function playSoundChaosDebug() {
+async function playSoundChaosDebug() {
     "use strict";
     var chars = [
 		"Amazon",
@@ -125,9 +127,9 @@ function playSoundChaosDebug() {
     }
 
     elem.id = "audio-chaos";
-    elem.src = "sounds/Common/" + chars[randChar] + "/" + chars[randChar] + randSound + ".wav";
+    elem.src = "sounds/Common/" + chars[randChar] + "/" + chars[randChar] + randSound + ".flac";
     
-    elem.onended = function () {
+    elem.onended = function() {
         playDeathSoundDebug();
         playSoundChaosDebug();
     };
@@ -150,7 +152,7 @@ function playTyrael(charName) {
     }
 
     elemTyrael.id = "audio-tyrael";
-    elemTyrael.src = "sounds/Common/" + charName + "/" + charName + rand + ".wav";
+    elemTyrael.src = "sounds/Common/" + charName + "/" + charName + rand + ".flac";
 
     elemTyrael.play();
 
@@ -170,7 +172,7 @@ function playCain(charName) {
     }
 
     elemCain.id = "audio-cain";
-    elemCain.src = "sounds/Common/" + charName + "/" + charName + rand + ".wav";
+    elemCain.src = "sounds/Common/" + charName + "/" + charName + rand + ".flac";
 
     elemCain.play();
 
@@ -190,7 +192,7 @@ function playPrime(charName) {
     }
 
     elemPrime.id = "audio-prime";
-    elemPrime.src = "sounds/Common/" + charName + "/" + charName + rand + ".wav";
+    elemPrime.src = "sounds/Common/" + charName + "/" + charName + rand + ".flac";
 
     elemPrime.play();
 
