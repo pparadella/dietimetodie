@@ -755,6 +755,11 @@ a[data-lightbox]:hover img{
 }
 @media (max-width: 767px)
 {    
+	#myBtn {
+        display: none; 
+		position: fixed;
+	}
+	
     a:visited {
         text-decoration: none;
     }
@@ -937,6 +942,5 @@ Font face declarations
   src: url("type/DIABLO_H.eot");
   src: local("☺"),
     url("type/DIABLO_H.woff") format("woff"),
-    url("type/DIABLO_H.otf") format("opentype"),
     url("type/DIABLO_H.svg#filename") format("svg");
 }
