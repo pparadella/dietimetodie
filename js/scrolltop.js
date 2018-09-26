@@ -1,5 +1,4 @@
 function topFunction() {
-    "use strict";
     if (navigator.userAgent.match(/(iPod|iPhone|iPad|Android)/)) {
         window.scrollTo(200, 0); // first value for left offset, second value for top offset
     } else {
@@ -13,8 +12,7 @@ function topFunction() {
 }
 
 function scrollFunction() {
-    "use strict";
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20 && (window.innerWidth > 767)) {
         document.getElementById("myBtn").style.display = "block";
     } else {
         document.getElementById("myBtn").style.display = "none";
