@@ -25,7 +25,7 @@
         <!-- Minified version of `es6-promise-auto` below. -->
         <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script> 
-        <script async type="text/javascript">
+        <script type="text/javascript">
             function downloadJSAtOnload() {
                 "use strict";
                 var elemWelcome = document.createElement("audio"), elemScriptThreat = document.createElement("script"), randSound = Math.floor((Math.random() * 28) + 1);
@@ -35,15 +35,12 @@
                 elemWelcome.src = "sounds/Entrance/Welcome" + randSound + ".flac";
                 document.getElementById("page-body").appendChild(elemScriptThreat);
                 document.getElementById("page-body").appendChild(elemWelcome);
+
                 elemWelcome.play();
             }
         </script>
         <script type="text/javascript">
-            if (window.addEventListener) {
-                window.addEventListener("load", downloadJSAtOnload, false);
-            } else if (window.attachEvent) {
-                window.attachEvent("onload", downloadJSAtOnload);
-            } else {window.onload = downloadJSAtOnload; }
+            window.onload = downloadJSAtOnload;
         </script>
     </head>
     <body id="page-body">
