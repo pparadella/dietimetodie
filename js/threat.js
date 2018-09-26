@@ -103,7 +103,7 @@ async function playDeathSoundDebug() {
     return false;
 }
 
-async function playSoundChaosDebug() {
+function playSoundChaosDebug() {
     "use strict";
     var chars = [
 		"Amazon",
